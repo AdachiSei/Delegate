@@ -2,11 +2,22 @@
 
 public class System : MonoBehaviour
 {
+    Timer _timer;
+
     void Start()
     {
-        Timer timer = new Timer();
-        timer.onComplete.AddListener(Alarm);
-        timer.CountDown();
+        _timer = new Timer();//参照       
+        _timer.CountDown();//実行
+    }
+
+    private void Update()
+    {
+        if(Input.GetButtonDown("Jump"))
+        {
+            _timer.onComplete.AddListener(Alarm);//代入
+            _timer.CountDown();//実行
+
+        }
     }
 
     void Alarm()
